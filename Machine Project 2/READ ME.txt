@@ -1,0 +1,64 @@
+OPERSYS S21
+
+TheOS Members:
+Amadora, Angelo John
+Aquino, Kurt Neil
+Choy, Matthew Seaver
+Susada, Jan Renee
+
+Run code for command prompt:
+nasm -f elf32 kernel.asm -o kasm.o &&
+gcc -m32 -c kernel.c -o kc.o &&
+gcc -m32 -c kernel.c -o kc.o -fno-stack-protector &&
+ld -m elf_i386 -T link.ld -o kernel kasm.o kc.o &&
+qemu-system-i386 -kernel kernel
+
+Function calls:
+*say
+input: say haha
+output: haha
+
+*marquee
+input: marquee haha
+output: <scrolls "haha" through the screen>
+
+*clear screen
+input: cls
+output: <clears the screen>
+
+*putstring
+input: putstring <any single character><space><string>
+output: <saves string into a list of strings>
+
+*getstring
+input: getstring <any existing key character>
+output:<string represented by the character>
+
+*popstring
+input: popstring <any existing key character>
+output:<removes string represented by the character from the list>
+
+*view running programs
+input: <press key ~>
+output:<displays program list>
+
+*Function 1 - iterates an integer infinitely
+input: run prg1
+<view program list and enter process number>
+
+*Function 2 - iterates an integer until 30
+input: run prg2
+<view program list and enter process number>
+
+*Function 3 - prints "Sup Sir!" 100 times
+input: run prg3
+<view program list and enter process number>
+
+Known bugs:
+Must press console then press enter to input again.
+backspace is not functioning properly as of the moment (doesnt backspace until after 6 characters, idk 
+Marquee is glitching out (does not affect MP2 functionalities)
+Inputs may glitch at the processes menu (due to backspace glitch) be careful with inputs
+
+
+
